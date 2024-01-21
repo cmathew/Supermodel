@@ -284,7 +284,15 @@ bool CNew3D::RenderScene(int priority, bool renderOverlay, Layer layer)
 
 	bool hasOverlay = false;		// (high priority polys)
 
+	int nodeIndex = 0;
 	for (auto &n : m_nodes) {
+
+		// nodes 2 and 3 correspond to VF3 fighters
+		if (nodeIndex == 2 || nodeIndex == 3) {
+			nodeIndex++;
+			continue;  
+		}
+		nodeIndex++;
 
 		if (n.viewport.priority != priority || n.models.empty()) {
 			continue;
