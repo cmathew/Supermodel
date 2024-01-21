@@ -314,7 +314,7 @@ void CRender2D::Setup2D(bool isBottom)
 			glBindFramebuffer(GL_FRAMEBUFFER, m_aaTarget);	// set target if needed
 		}
 
-		glClearColor(0.0, 0.0, 0.0, 0.0);
+		glClearColor(1.0, 0.0, 1.0, 0.0);
 		glViewport	(0, 0, m_totalXPixels, m_totalYPixels);
 		glDisable	(GL_SCISSOR_TEST);							// scissor is enabled to fix the 2d/3d miss match problem
 		glClear		(GL_COLOR_BUFFER_BIT);						// we want to clear outside the scissored areas so must disable it
@@ -414,19 +414,19 @@ void CRender2D::PreRenderFrame(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	// render top layer
-	for (int i = 4; i-- > 0;) {
+	//for (int i = 4; i-- > 0;) {
 
-		if (!IsEnabled(i)) {
-			continue;
-		}
+	//	if (!IsEnabled(i)) {
+	//		continue;
+	//	}
 
-		if (!Above3D(i)) {
-			continue;
-		}
+	//	if (!Above3D(i)) {
+	//		continue;
+	//	}
 
-		glUniform1i(m_shaderTileGen.uniformLocMap["layerNumber"], i);
-		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	}
+	//	glUniform1i(m_shaderTileGen.uniformLocMap["layerNumber"], i);
+	//	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	//}
 
 	glBindVertexArray(0);
 
