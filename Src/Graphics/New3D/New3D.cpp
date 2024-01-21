@@ -328,6 +328,9 @@ bool CNew3D::RenderScene(int priority, bool renderOverlay, Layer layer)
 
 bool CNew3D::SkipLayer(int layer)
 {
+	
+	return (layer == 3);
+
 	for (const auto &n : m_nodes) {
 		if (n.viewport.priority == layer) {
 			if (!n.models.empty()) {
