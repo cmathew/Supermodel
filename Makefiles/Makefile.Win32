@@ -49,8 +49,8 @@ BITS = 64
 #
 # Path to SDL2
 #
-SDL2_INCLUDE_DIR = \msys64\mingw64\include\SDL2
-SDL2_LIB_DIR = \msys64\mingw64\lib
+SDL2_INCLUDE_DIR = c:\msys64\mingw64\include\SDL2
+SDL2_LIB_DIR = c:\msys64\mingw64\lib
 
 #
 # Toolchain
