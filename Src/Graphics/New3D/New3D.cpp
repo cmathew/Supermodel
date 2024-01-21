@@ -329,6 +329,7 @@ bool CNew3D::RenderScene(int priority, bool renderOverlay, Layer layer)
 bool CNew3D::SkipLayer(int layer)
 {
 	
+	// skipping 3 hides the mysterious small red triangle
 	return (layer == 3);
 
 	for (const auto &n : m_nodes) {

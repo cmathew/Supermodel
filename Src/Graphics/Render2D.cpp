@@ -414,19 +414,21 @@ void CRender2D::PreRenderFrame(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	// render top layer
-	//for (int i = 4; i-- > 0;) {
+	for (int i = 4; i-- > 0;) {
 
-	//	if (!IsEnabled(i)) {
-	//		continue;
-	//	}
+		if (!IsEnabled(i)) {
+			continue;
+		}
 
-	//	if (!Above3D(i)) {
-	//		continue;
-	//	}
-
-	//	glUniform1i(m_shaderTileGen.uniformLocMap["layerNumber"], i);
-	//	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	//}
+		if (!Above3D(i)) {
+			continue;
+		}
+		// skipping 0 hides the HUD but keeps the menus! 
+		if (i != 0) {
+			glUniform1i(m_shaderTileGen.uniformLocMap["layerNumber"], i);
+			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		}
+	}
 
 	glBindVertexArray(0);
 
