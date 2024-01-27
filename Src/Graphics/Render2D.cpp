@@ -314,7 +314,7 @@ void CRender2D::Setup2D(bool isBottom)
 			glBindFramebuffer(GL_FRAMEBUFFER, m_aaTarget);	// set target if needed
 		}
 
-		glClearColor(1.0, 0.0, 1.0, 0.0);
+		glClearColor(0.0, 0.0, 0.0, 0.0);
 		glViewport	(0, 0, m_totalXPixels, m_totalYPixels);
 		glDisable	(GL_SCISSOR_TEST);							// scissor is enabled to fix the 2d/3d miss match problem
 		glClear		(GL_COLOR_BUFFER_BIT);						// we want to clear outside the scissored areas so must disable it
@@ -406,8 +406,11 @@ void CRender2D::PreRenderFrame(void)
 			continue;
 		}
 
-		glUniform1i(m_shaderTileGen.uniformLocMap["layerNumber"], i);
-		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		// layer 3 is the background texture
+		//if (i != 3) {
+			glUniform1i(m_shaderTileGen.uniformLocMap["layerNumber"], i);
+			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		//}
 	}
 
 	m_fboTop.Set();

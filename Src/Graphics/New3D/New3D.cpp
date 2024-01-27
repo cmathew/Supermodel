@@ -287,8 +287,13 @@ bool CNew3D::RenderScene(int priority, bool renderOverlay, Layer layer)
 	int nodeIndex = 0;
 	for (auto &n : m_nodes) {
 
-		// nodes 2 and 3 correspond to VF3 fighters
-		if (nodeIndex == 2 || nodeIndex == 3) {
+		// nodes 2 and 3 correspond to VF3 fighters on most stages
+		// great wall: 2 and 3 hides 1P, 5 and 4 hides 2P 
+		// stream: 1P is hidden with 2-5, inclusive. 2P is hidden with 6-9
+		// city: 3 - 15 inclusive hides 1P, 17-29 hides 2P
+		// caves: 1P is 11 - 23, 2P is 25 - 37
+
+		if ((nodeIndex >= 11 && nodeIndex <= 23) || (nodeIndex >= 25 && nodeIndex <= 37)) {
 			nodeIndex++;
 			continue;  
 		}
